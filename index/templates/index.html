@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load custom_filters %}
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>DBI</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- fevicon -->
+    {#      <link rel="icon" href="images/fevicon.png" type="image/gif" />#}
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    {#      <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}" media="screen">
+    <link href="{% static 'css/gijgo.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Javascript files-->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    <!-- sidebar -->
+    <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <!-- javascript -->
+    {#      <script src="{% static 'js/owl.carousel.js' %}"></script>#}
+    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/gijgo.min.js' %}" type="text/javascript"></script>
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+    <script>
+            // 页面加载完成后执行以下代码
+            $(document).ready(function() {
+                // 初始隐藏所有电影分类内容区域
+                $('.movies_section_2').hide();
+                // 显示第一个电影分类内容区域
+                $('.movies_section_2:first').show();
+
+                // 为电影分类菜单的链接添加点击事件处理程序
+                $('.movies_menu ul li a').on('click', function () {
+                    // 为当前点击的菜单项添加 'active' 类
+                    $(this).parent().addClass('active');
+                    // 移除其他菜单项的 'active' 类
+                    $(this).parent().siblings().removeClass('active');
+                    // 获取当前点击链接的 id
+                    const id = $(this).attr('name');
+                    console.log(id)
+                    // 隐藏所有电影分类内容区域
+                    $('.movies_section_2').hide()
+                    // 显示与当前点击链接 id 对应的电影分类内容区域
+                    $(`#${id}`).show()
+                });
+            });
+        </script>
+</head>
+<body>
+<!-- header section start -->
+<div class="header_section">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="logo" href="/index/"><img src="{% static 'images/logo.png' %}" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index/">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index/">电视剧</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index/">综艺</a>
+                </li>
+{#                <li class="nav-item">#}
+                    {#                    <img src="{% static 'images/search-icon.png' %}" alt="">#}
+{#                    <form method="post" action="/index/">#}
+{#                        <div class="form-group" style="float: left">#}
+{#                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
+{#                            <label for="exampleInputEmail1">输入关键词搜索</label>#}
+                            {#                            <small id="emailHelp" class="form-text text-muted"></small>#}
+{#                        </div>#}
+{#                        <button type="submit" class="btn btn-primary" style="margin: 7px;position: absolute;top: -0.2%">搜索</button>#}
+{#                    </form>#}
+{#                </li>#}
+            </ul>
+            <div class="search_icon"><a href="/login/"><img src="{% static 'images/user-icon.png' %}" alt=""><span class="padding_left_15">登录</span></a></div>
+        </div>
+    </nav>
+</div>
+<!-- header section end -->
+<!-- banner section end -->
+<div class="banner_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="banner_taital">享受 <br>电影带来的冲击！</div>
+                <p class="banner_text">快来我们的电影平台观看电影吧！ </p>
+                <div class="see_bt"><a href="/login/">See More</a></div>
+            </div>
+            <div class="col-md-6">
+                <div class="play_icon"><a href="/login/"><img src="{% static 'images/play-icon.png' %}" alt=""></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner section end -->
+<!-- arrival section start -->
+<div class="arrival_section layout_padding">
+    <div class="container">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-sm-6 col-lg-4">
+                <div class="image_1" style="background-image: url(../../media/{{ random_mv.logo }});">
+                    <h2 class="jesusroch_text">{{ random_mv.title }}</h2>
+                    <p class="movie_text">{{ random_mv.release_date }}</p>
+                </div>
+            </div>
+            <div class="col-sm-8 col-lg-8">
+                <h1 class="arrival_text">{{ random_mv.title }}</h1>
+                <div class="movie_main" style="flex-wrap: wrap;">
+                    <div class="mins_text">
+                        {% for cat in random_mv.category.all %}
+                            {{ cat.name }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="mins_text"><img src="{% static 'images/icon-1.png' %}" alt=""></div>
+                </div>
+                <p class="long_text" style="text-overflow: ellipsis;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;">{{ random_mv.info }}</p>
+                <div class="rating_main">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-6">
+                            <div class="icon_2"><img src="{% static 'images/icon-2.png' %}" alt=""><span class="padding_10">{{ random_mv.rating }}</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="paly_bt" style="padding-top: 20px"><a href="/login/">查看详情</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- arrival section end -->
+<!-- movies section start -->
+<div class="movies_section layout_padding">
+    <div class="container">
+        <div class="movies_menu">
+            <ul>
+                {#                <li class="active"><a href="/login/">Overview</a></li>#}
+                {% for category in categories %}
+                    {% if forloop.first %}
+                        <li class="active"><a href="#{{ category.id }}" name="{{ category.id }}">{{ category.name }}</a></li>
+                    {% else %}
+                        <li><a href="#{{ category.id }}" name="{{ category.id }}">{{ category.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% for category in categories %}
+            <div class="movies_section_2 layout_padding" id="{{ category.id }}">
+                <h2 class="letest_text">{{ category.name }}</h2>
+                <div class="seemore_bt"><a href="/login/">See More</a></div>
+                <div class="movies_main">
+                    <div class="iamge_movies_main">
+                        {% for m in category_movies|get_item:category %}
+                            <div class="iamge_movies">
+                                <div class="image_3">
+                                    <img src="../../media/{{ m.logo }}" class="image" style="width:100%" alt="">
+                                    <div class="middle">
+                                        <div class="paly_bt"><a href="/login/">查看详情</a></div>
+                                    </div>
+                                </div>
+                                <h1 class="code_text">{{ m.title }}</h1>
+                                <p class="there_text">
+                                    {% for actor in m.actor.all %}
+                                        {{ actor.name }}
+                                        {% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </p>
+                                <div class="star_icon">
+                                    <ul>
+                                        {% with rating=m.rating|floatformat:0 %}
+                                            {% for i in rating|times %}
+                                                <li><a href="/login/"><img src="{% static 'images/star-icon.png' %}" alt=""></a></li>
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+{#        <div class="seebt_1"><a href="/login/">See More</a></div>#}
+    </div>
+</div>
+<!-- movies section end -->
+<!-- newsletter section start -->
+<div class="newsletter_section layout_padding">
+    <div class="container">
+        <h1 class="newsletter_text">搜索</h1>
+        <div class="box_main">
+            <p class="dummy_text">在这里搜索关键词查询电影</p>
+            <div class="mail_main">
+                <form action="#" method="post">
+                {% csrf_token %}
+                      <div class="form-row align-items-center">
+                        <div class="col-sm-8 my-1">
+                          <label class="sr-only" for="inlineFormInputName">Name</label>
+                          <input type="text" class="form-control" id="inlineFormInputName" placeholder="KeyWords">
+                        </div>
+                        <div class="col-auto my-1">
+                          <button type="submit" class="btn btn-primary">搜索</button>
+                        </div>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- newsletter section end --><!-- footer  section start -->
+<div class="footer_section layout_padding">
+    <div class="container">
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/login/">Home</a></li>
+                <li><a href="/login/">Movies</a></li>
+                <li><a href="/login/">TV</a></li>
+                <li><a href="/login/">Celebs</a></li>
+                <li><a href="/login/">Sports</a></li>
+                <li><a href="/login/">News</a></li>
+            </ul>
+        </div>
+        <div class="social_icon">
+            <ul>
+                <li><a href="/login/"><img src="{% static 'images/fb-icon.png' %}" alt=""></a></li>
+                <li><a href="/login/"><img src="{% static 'images/twitter-icon.png' %}" alt=""></a></li>
+                <li><a href="/login/"><img src="{% static 'images/linkedin-icon.png' %}" alt=""></a></li>
+                <li><a href="/login/"><img src="{% static 'images/instagram-icon.png' %}" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- footer  section end -->
+<!-- copyright section start -->
+<div class="copyright_section">
+    <div class="container">
+        <div class="copyright_text">Copyright &copy; 2025.Company name All rights reserved.<a href="/login/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+    </div>
+</div>
+<!-- copyright section end -->
+
+</body>
+</html>

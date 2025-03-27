@@ -11,7 +11,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('',index),
     path('home/',home),
-    path('home/about/<int:id>',about),
+    path('home/about/<int:id>',about,name='about'),
     path('home/details/<int:id>',details,name='details')
 ]
 

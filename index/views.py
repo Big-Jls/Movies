@@ -65,29 +65,41 @@ def about(request, id):
         username = user.username
         avatar = user.avatar
         email = user.email
+        id = user.id
         password = user.password
-
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            email = request.POST.get('email')
-            avatar = request.FILES.get('avatar')  # 处理文件上传
-
-            user.username = username
-            if password:
-                user.set_password(password)
-            user.email = email
-            if avatar:
-                user.avatar = avatar
-            user.save()
-
-        return render(request, 'about.html', {
+        context = {
+            'id': id,
             "username": username,
             "avatar": avatar,
             "email": email,
             "password": password
-        })
-    return render(request, 'about.html', {})
+        }
+
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            password2 = request.POST.get('password2')
+            email = request.POST.get('email')
+            avatar = request.FILES.get('avatar')  # 处理文件上传
+
+            user.username = username
+            if password == password2:
+                user.set_password(password)
+            else:
+                message = '两次密码不一致'
+                context['message'] = message
+                return render(request, 'about.html', context=context)
+            user.email = email
+            if avatar:
+                user.avatar = avatar
+            user.save()
+            message = '已修改'
+            context['message'] = message
+            return redirect(f'/home/about/{id}')
+
+        return render(request, 'about.html', context=context)
+    message = '未知用户'
+    return render(request, 'about.html', {"message": message})
 
 
 def details(request, id):

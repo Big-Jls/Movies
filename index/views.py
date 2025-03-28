@@ -126,3 +126,7 @@ def details(request, id):
         Content.objects.create(user_name=user, content=texts, movies=mv, timestamp=formatted_time)
         return redirect(f'/home/details/{id}')
     return render(request, 'details.html', context)
+
+
+def movies(request):
+    return render(request, 'movies.html')

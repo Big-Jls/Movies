@@ -1,5 +1,5 @@
 from login.views import register
-from .views import index, home, about, details
+from .views import index, home, about, details, movies
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -12,7 +12,8 @@ urlpatterns = [
     path('',index),
     path('home/',home),
     path('home/about/<int:id>',about,name='about'),
-    path('home/details/<int:id>',details,name='details')
+    path('home/details/<int:id>',details,name='details'),
+    path('home/movies/',movies)
 ]
 
 
